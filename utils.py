@@ -59,7 +59,7 @@ def train_md(hash_md,IMG_SCALE=108):
     To wrap a model with the sim_loss function into the inference model.
     :param hash_md: hash model, that we can later use for inference
     :param IMG_SCALE: Same value set for height & width
-    :return:
+    :return:tuple, training model and the inference model
     """
     w1_ipt = Input(shape=(IMG_SCALE, IMG_SCALE, 3), name="w1")
     w2_ipt = Input(shape=(IMG_SCALE, IMG_SCALE, 3), name="w2")
