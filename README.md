@@ -16,5 +16,6 @@ The main point of this technique, is to conquer **variations** created on purpos
 We can put in the variation mode we choose, the similarity detection can be color/shift/shear/rescale tolerable, but still pin point nothing but the similar images.
 
 For Details, see the [explaining notebook](https://github.com/raynardj/silse/blob/master/sim_city2_explain.ipynb) here.
-
+![Training Structure](https://github.com/raynardj/silse/blob/master/img/training.png?raw=true)
+![Production Structure](https://github.com/raynardj/silse/blob/master/img/production.png?raw=true)
 ![Model Structure](https://github.com/raynardj/silse/blob/master/img/structure.png?raw=true)
