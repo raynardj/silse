@@ -5,7 +5,7 @@ from keras.models import *
 from keras.optimizers import Adam
 import keras.backend as K
 from keras.metrics import mae
-
+import tensorflow as tf
 
 class sim_gen:
     """
@@ -70,3 +70,27 @@ def train_md(hash_md,IMG_SCALE=108):
     train_md = Model(inputs=[w1_ipt, w2_ipt, s_ipt], outputs=x, name="train_model")
     train_md.compile(loss=lambda y_t, y_p: y_p, optimizer=Adam())
     return train_md, f_
+
+# String harshing
+def arrlize(x):
+    benchmark = K.constant(.5,dtype=tf.float64)
+    arr = K.cast(K.greater(K.cast(x,tf.float64),benchmark),dtype=tf.int16)
+    return arr
+
+def inf_md(hash_md):
+    ipt=Input((48,),name="hashing_input")
+    x=Lambda(arrlize)(ipt)
+    infmd=Model(ipt,x)
+    hipt=hash_md.get_input_at(0)
+    return Model(hipt,infmd(hash_md(hipt)))
+
+def str2hex(x):
+    """
+    convert a string of 1s and 0s to hex string
+    :param x:some string look like 10001011..., a string
+    :return:
+    """
+    return "%x"%(int(x, 2))
+
+def concat(intlist):
+    return str2hex("".join(list(str(i) for i in intlist)))
