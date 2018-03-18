@@ -2,6 +2,13 @@
 
 ![Production Structure](https://github.com/raynardj/silse/blob/master/img/production.png?raw=true)
 
+### Run inference
+
+```bash
+python silse.py --imgdir = /data/train \
+                --weights = /data/sim.h5
+```
+
 #### Challenge for data scientists with image dataset
 
 Of course, you work isn't always going to be using well prepared dataset like imagenet and coco.
